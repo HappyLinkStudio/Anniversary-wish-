@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary, My Love ❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Floating Hearts Animation */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.6);
+            animation: floatUp 6s linear infinite;
+            bottom: -10vh;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Custom Dark Pink Gradient Background */
+        .bg-romantic-gradient {
+            background: linear-gradient(135deg, #4a0e17 0%, #831843 50%, #2b090e 100%);
+        }
+
+        /* Opening Gate Transition Effect */
+        #welcomeGate {
+            transition: all 0.8s ease-in-out;
+        }
+        .gate-hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-romantic-gradient min-h-screen text-white font-sans relative overflow-x-hidden flex flex-col justify-between">
+
+    <!-- WELCOME GATE OVERLAY SCREEN -->
+    <div id="welcomeGate" class="fixed inset-0 z-50 bg-romantic-gradient flex flex-col items-center justify-center p-6 text-center">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
+
+        <div class="relative z-10 max-w-md w-full bg-black/40 border border-pink-500/40 p-8 rounded-3xl shadow-2xl animate__animated animate__zoomIn">
+            <div class="w-20 h-20 bg-pink-600/30 border border-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-300 text-3xl shadow-inner animate-pulse">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-pink-100 mb-2">A Special Surprise</h2>
+            <p class="text-pink-200 text-sm mb-8">Someone special has created a memory lane just for you. Tap below to open!</p>
+
+            <button onclick="openSurprise()" class="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg transition transform active:scale-95 flex items-center justify-center gap-3 text-lg border border-pink-400/30 cursor-pointer">
+                <i class="fa-solid fa-gift"></i> Tap to Open ❤️
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Container -->
+    <div id="hearts-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10 container mx-auto px-4 py-8 flex flex-col items-center flex-grow">
+
+        <!-- Music Control Floating Button -->
+        <div class="fixed top-6 right-6 z-40">
+            <button id="musicToggleBtn" onclick="toggleMusic()" class="bg-pink-600 hover:bg-pink-500 text-white p-3 rounded-full shadow-lg transition duration-300 flex items-center justify-center w-12 h-12 focus:outline-none cursor-pointer">
+                <i id="musicIcon" class="fa-solid fa-music text-lg"></i>
+            </button>
+            <!-- Romantic Melody Audio Source -->
+            <audio id="bgMusic" preload="auto" loop>
+                <source src="https://actions.google.com/sounds/v1/ambiences/romantic_music.ogg" type="audio/ogg">
+                <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c3a7269f.mp3?filename=sweet-love-11234.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <!-- Header Section -->
+        <header class="text-center my-12 animate__animated animate__fadeInDown">
+            <span class="text-pink-300 tracking-widest uppercase text-sm font-semibold">Our Special Milestone</span>
+            <h1 class="text-4xl md:text-6xl font-bold mt-2 text-pink-100 drop-shadow-md">Happy Anniversary</h1>
+            <p class="text-pink-200 mt-2 text-lg italic">"Every moment with you is a treasure."</p>
+        </header>
+
+        <!-- 5-Photo Memory Gallery Section -->
+        <section class="my-4 w-full max-w-5xl">
+            <h2 class="text-2xl font-bold text-center text-pink-200 mb-8 animate__animated animate__fadeIn">
+                <i class="fa-solid fa-heart text-pink-500 mr-2"></i> Our Beautiful Journey
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                <!-- 1. First Meet (img1.jpg) -->
+                <div class="bg-pink-900/20 border border-pink-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 group">
+                    <div class="h-48 bg-pink-950/60 overflow-hidden relative">
+                        <img src="img1.jpg" alt="First Meet" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-md text-pink-100 font-semibold">First Meet</p>
+                        <p class="text-xs text-pink-300/80 mt-1">Where our story magically began...</p>
+                    </div>
+                </div>
+
+                <!-- 2. First Walk (img2.jpg) -->
+                <div class="bg-pink-900/20 border border-pink-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 group">
+                    <div class="h-48 bg-pink-950/60 overflow-hidden relative">
+                        <img src="img2.jpg" alt="First Walk" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-md text-pink-100 font-semibold">First Walk</p>
+                        <p class="text-xs text-pink-300/80 mt-1">Hand in hand under the open sky.</p>
+                    </div>
+                </div>
+
+                <!-- 3. First Fight (img3.jpg) -->
+                <div class="bg-pink-900/20 border border-pink-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 group">
+                    <div class="h-48 bg-pink-950/60 overflow-hidden relative">
+                        <img src="img3.jpg" alt="First Fight" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-md text-pink-100 font-semibold">First Fight</p>
+                        <p class="text-xs text-pink-300/80 mt-1">Proving our bond is stronger than any argument.</p>
+                    </div>
+                </div>
+
+                <!-- 4. First Proposal (img4.jpg) -->
+                <div class="bg-pink-900/20 border border-pink-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 group">
+                    <div class="h-48 bg-pink-950/60 overflow-hidden relative">
+                        <img src="img4.jpg" alt="First Proposal" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-md text-pink-100 font-semibold">First Proposal</p>
+                        <p class="text-xs text-pink-300/80 mt-1">The easiest "Yes" ever said.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Forever Together (img5.jpg) -->
+                <div class="bg-pink-900/20 border border-pink-500/30 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 group sm:col-span-2 md:col-span-2">
+                    <div class="h-48 bg-pink-950/60 overflow-hidden relative">
+                        <img src="img5.jpg" alt="Forever Together" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-md text-pink-100 font-semibold">Forever Together</p>
+                        <p class="text-xs text-pink-300/80 mt-1">Creating endless memories ahead.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 text-center py-6 text-pink-300/70 text-sm">
+        <p>Made with endless love ❤️ Forever & Always</p>
+    </footer>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // 1. Floating Hearts Generator
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '<i class="fa-solid fa-heart"></i>';
+
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+
+            const duration = Math.random() * 4 + 4;
+            heart.style.animationDuration = duration + 's';
+
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 400);
+
+        // 2. Open Gate & Play Music Automatically on Click
+        const bgMusic = document.getElementById("bgMusic");
+        const musicToggleBtn = document.getElementById("musicToggleBtn");
+        const musicIcon = document.getElementById("musicIcon");
+        let isPlaying = false;
+
+        function openSurprise() {
+            const gate = document.getElementById("welcomeGate");
+            gate.classList.add("gate-hidden");
+
+            // Play background music instantly upon tapping the gate button
+            bgMusic.play().then(() => {
+                musicIcon.classList.remove("fa-music");
+                musicIcon.classList.add("fa-pause");
+                musicToggleBtn.classList.remove("bg-pink-600");
+                musicToggleBtn.classList.add("bg-rose-500");
+                isPlaying = true;
+            }).catch(e => {
+                console.log("Audio autoplay prevented:", e);
+            });
+        }
+
+        // 3. Audio Manual Play/Pause Toggle
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove("fa-pause");
+                musicIcon.classList.add("fa-music");
+                musicToggleBtn.classList.remove("bg-rose-500");
+                musicToggleBtn.classList.add("bg-pink-600");
+            } else {
+                bgMusic.play().then(() => {
+                    musicIcon.classList.remove("fa-music");
+                    musicIcon.classList.add("fa-pause");
+                    musicToggleBtn.classList.remove("bg-pink-600");
+                    musicToggleBtn.classList.add("bg-rose-500");
+                }).catch(e => {
+                    console.log("Audio playback failed:", e);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
+</body>
+</html>
